@@ -1,13 +1,13 @@
 // Add imports above this line
 import { galleryItems } from './gallery-items';
 // Change code below this line
-
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const galleryParent = document.querySelector('.gallery');
 const markupGallery = addImageToMarkupGallery(galleryItems);
 const galleryHtml = addGalleryToHtml(markupGallery, galleryParent);
 galleryParent.addEventListener('click', resetDownloadFunction);
-const lightboxGallery = createNewSimpleLightbox('.gallery a');
 
 function addImageToMarkupGallery(imagesTable) {
   return imagesTable
@@ -32,9 +32,8 @@ function resetDownloadFunction(event) {
   event.preventDefault();
 }
 
-function createNewSimpleLightbox(className) {
-  return new SimpleLightbox(className, {
-    captionsData: 'alt',
-    captionDelay: 250,
-  });
-}
+var lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
+
